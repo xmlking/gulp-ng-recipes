@@ -9,8 +9,16 @@ import bs from './server.js';
 import {CONFIG, options} from './globals.js';
 
 
+// import scsslint from 'gulp-scss-lint';
+// Lint SASS.
+gulp.task('lintsass', () => {
+  //return gulp.src(CONFIG.sass.src)
+  //    .pipe(cache('lintsass'))
+  //    .pipe(scsslint());
+});
+
 //TODO minifyCss
-gulp.task('sass', function() {
+gulp.task('sass', () => {
 
   return gulp.src(CONFIG.sass.src)
     .pipe(sourcemaps.init())
@@ -23,3 +31,4 @@ gulp.task('sass', function() {
     //.pipe(iff(bs.active,bs.stream({match: "**/*.css"})))
     .pipe(iff(bs.active, bs.stream()))
 });
+

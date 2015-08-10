@@ -25,7 +25,7 @@ import sourcemaps from 'gulp-sourcemaps';
 import ts from 'gulp-typescript';
 import tsconfig from '../tsconfig.json';
 
-gulp.task('scripts', () => {
+gulp.task('tsscripts', () => {
   return gulp.src(tsconfig.filesGlob)
     .pipe(sourcemaps.init())
     .pipe(ts(tsconfig.compilerOptions, undefined, ts.reporter.defaultReporter()))
@@ -46,4 +46,7 @@ gulp.task('scripts2', function() {
     .pipe(gulp.dest(CONFIG.typescript.dest));
 });
 
+// alias
+gulp.task('lintjs', ['tslint']);
+gulp.task('scripts', ['tsscripts']);
 

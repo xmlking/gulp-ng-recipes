@@ -9,6 +9,8 @@ gulp.task('clean', (cb) => {
   del(['.tmp', 'dist'], {dot: true}, cb);
 });
 
+gulp.task('lint', ['lintjs', 'lintsass']);
+
 // Scan your HTML for assets & optimize them
 gulp.task('html', () => {
   gulp.src('app/index.html')
@@ -40,7 +42,7 @@ gulp.task('bundle', () => {
 gulp.task('default', ['clean'], cb => {
   runSequence(
     'sass',
-    ['tslint', 'html', 'scripts', 'images', 'fonts', 'copy'],
+    ['lint', 'html', 'scripts', 'images', 'fonts', 'copy'],
     'generate-service-worker',
     cb
   );

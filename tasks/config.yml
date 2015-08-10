@@ -87,6 +87,11 @@ typescript:
   src: "app/**/*.ts"
   dest: .tmp
 
+# scripts
+scripts:
+  src: "app/**/*.js"
+  dest: .tmp
+
 # images
 images:
   src: "app/assets/images/**/*.{png,gif,jpg,cur}"
