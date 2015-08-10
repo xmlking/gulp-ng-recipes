@@ -1,10 +1,12 @@
 {
   "name": "gulp-ng-recipes",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "A collection of gulp recipies.",
   "main": "gulpfile.babel.js",
   "scripts": {
-    "test": "karma start"
+    "test": "karma start",
+    "build": "babel tasks --out-dir dist",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
