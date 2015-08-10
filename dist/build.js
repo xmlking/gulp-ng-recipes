@@ -24,6 +24,8 @@ _gulp2['default'].task('clean', function (cb) {
   (0, _del2['default'])(['.tmp', 'dist'], { dot: true }, cb);
 });
 
+_gulp2['default'].task('lint', ['lintjs', 'lintsass']);
+
 // Scan your HTML for assets & optimize them
 _gulp2['default'].task('html', function () {
   _gulp2['default'].src('app/index.html').pipe(replace('jspm_packages/system.js', 'build.js')).pipe(replace('<script src="config.js"></script>', '')).pipe(replace('<script>System.import(\'app\');</script>', '')).pipe(_gulp2['default'].dest(global.paths.dist));
@@ -43,5 +45,5 @@ _gulp2['default'].task('bundle', function () {
 });
 
 _gulp2['default'].task('default', ['clean'], function (cb) {
-  (0, _runSequence2['default'])('sass', ['tslint', 'html', 'scripts', 'images', 'fonts', 'copy'], 'generate-service-worker', cb);
+  (0, _runSequence2['default'])('sass', ['lint', 'html', 'scripts', 'images', 'fonts', 'copy'], 'generate-service-worker', cb);
 });
