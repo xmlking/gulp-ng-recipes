@@ -1,0 +1,221 @@
+---
+# ===================================================================
+# BUILD-TIME CONFIG PROPERTIES
+#
+# This is multi-env properties file. Keep sensitive data in external
+# file that SysOps can source at runtime.
+# ===================================================================
+
+
+# ----------------------------------------
+# CORE PROPERTIES
+# ----------------------------------------
+
+# Paths
+paths:
+  src: app
+  extras:
+    - "app/.htaccess"
+    - "app/config.yml"
+    - "app/favicon.ico"
+    - "app/robots.txt"
+    - "app/**/*.json"
+    - ".tmp/*/**/*.css"
+    - "app/**/*.tpl.html"
+  temp: .tmp
+  dest: dist
+
+# html
+html:
+  src: "app/**/*.html"
+  dest: dist
+
+# server
+browserSync:
+  options:
+    logPrefix: 'SPA'
+    server:
+      baseDir:
+        - '.tmp'
+        - 'app'
+        - '.'
+      index: "index.html"
+      routes:
+        "/source": "/app"
+    debug:
+      browser: "google chrome"
+#      logLevel: "debug"
+    release:
+      notify: false
+
+# css
+sass:
+  src:
+    - "app/**/*.scss"
+    - "!app/assets/styles/**/_*.scss"
+  dest: .tmp
+  autoprefixer:
+    - "ie >= 10"
+    - "ie_mob >= 10"
+    - "ff >= 30"
+    - "chrome >= 34"
+    - "safari >= 7"
+    - "opera >= 23"
+    - "ios >= 7"
+    - "android >= 4.4"
+    - "bb >= 10"
+  options:
+    precision: 10
+    debug:
+      outputStyle: "nested"
+      errLogToConsole: true
+    release:
+      outputStyle: "compressed"
+
+# sourcemaps
+sourcemaps:
+  dest: .maps
+  options:
+    sourceRoot: "/app"
+    debug:
+      includeContent: true
+    release:
+      includeContent: false
+
+# scripts
+typescript:
+  src: "app/**/*.ts"
+  dest: .tmp
+
+# images
+images:
+  src: "app/assets/images/**/*.{png,gif,jpg,cur}"
+  dest: dist
+  options:
+    optimizationLevel: 3
+    progressive: true
+    interlaced: true
+
+# sw-precache
+swPrecache:
+  options:
+    cacheId: "spa-starter-kit"
+#    dynamicUrlToDependencies:
+#      "dynamic/page1":
+#        - "app/views/layout.jade"
+#        - "app/views/page1.jade"
+#      "dynamic/page2":
+#        - "app/views/layout.jade"
+#        - "app/views/page2.jade"
+    debug:
+      handleFetch: false
+      staticFileGlobs:
+        - "app/assets/fonts/**/*.woff"
+        - "app/assets/images/**/*"
+        - "app/assets/styles/**/*.css"
+        - "app/**/*.js"
+        - "app/*.{html,json}"
+      stripPrefix: "app/"
+      verbose: true
+    release:
+      handleFetch: true
+      staticFileGlobs:
+        - "dist/assets/fonts/**/*.woff"
+        - "dist/assets/images/**/*"
+        - "dist/assets/styles/**/*.css"
+        - "dist/**/*.js"
+        - "dist/*.{html,json}"
+      stripPrefix: "dist/"
+
+# JSPM Bundler
+build:
+  dest: dist
+
+# Require JS Bundler
+buildProfile:
+  mainConfigFile: app/require.config.js
+  appDir: .tmp
+  baseUrl: '.'
+  removeCombined: true
+  findNestedDependencies: true
+  dir: dist
+  optimizeCss: none
+  optimize: none
+  modules:
+    - name: vendor
+      exclude:
+        - angular
+    - name: bootstrap
+      include:
+        - requirejs
+      exclude:
+        - vendor
+    - name: common/index
+    - name: drug/index
+    - name: experiments/index
+    - name: grails/index
+    - name: home/index
+    - name: iprovider/index
+    - name: provider/index
+
+
+# deploy
+deploy:
+  src: "dist/**/*"
+
+# ----------------------------------------
+# TESTING PROPERTIES
+# ----------------------------------------
+
+# karma unit testing
+karmaCommonConf:
+  frameworks:
+    - jasmine
+    - requirejs
+    - traceur
+  files:
+    - test/test-main.js
+    - pattern: "app/**/*.js"
+      included: false
+    - pattern: "test/unit/**/*.js"
+      included: false
+    - pattern: "./bower_components/di/dist/amd/*.js"
+      included: false
+    - pattern: ./bower_components/assert/dist/amd/assert.js
+      included: false
+    - pattern: ./bower_components/diary/dist/amd/diary.js
+      included: false
+    - pattern: ./bower_components/harmony-reflect/reflect.js
+      included: false
+  exclude:
+    - app/bootstrap.js
+  proxies:
+    /base/di/: /base/bower_components/di/dist/amd/
+    /base/assert.js: /base/bower_components/assert/dist/amd/assert.js
+    /base/diary.js: /base/bower_components/diary/dist/amd/diary.js
+    /base/harmony-reflect.js: /base/bower_components/harmony-reflect/reflect.js
+  reporters:
+    - progress
+  preprocessors:
+    "app/**/*.js":
+      - traceur
+    "test/unit/**/*.js":
+      - traceur
+  browsers:
+    - Chrome
+  traceurPreprocessor:
+    options:
+      modules: amd
+      atscript: true
+      types: true
+      typeAssertions: true
+      typeAssertionModule: assert
+      annotations: true
+      memberVariables: true
+      asyncFunctions: true
+      asyncGenerators: true
+      forOn: true
+      arrayComprehension: true
+      generatorComprehension: true
+      experimental: true
+
