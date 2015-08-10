@@ -9,7 +9,7 @@ import {ErrorHandler} from './errors';
 
 
 gulp.task('eslint', () => {
-  return gulp.src(eslint.scripts.src)
+  return gulp.src(CONFIG.scripts.src)
     .pipe(cached('jshint'))
     .pipe(eslint())
     .pipe(eslint.format('stylish'))

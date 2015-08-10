@@ -27,7 +27,7 @@ var _serverJs2 = _interopRequireDefault(_serverJs);
 var _errors = require('./errors');
 
 _gulp2['default'].task('eslint', function () {
-  return _gulp2['default'].src(_gulpEslint2['default'].scripts.src).pipe((0, _gulpCached2['default'])('jshint')).pipe((0, _gulpEslint2['default'])()).pipe(_gulpEslint2['default'].format('stylish')).pipe((0, _gulpIf2['default'])(!_serverJs2['default'].active, _gulpEslint2['default'].failOnError()));
+  return _gulp2['default'].src(_globalsJs.CONFIG.scripts.src).pipe((0, _gulpCached2['default'])('jshint')).pipe((0, _gulpEslint2['default'])()).pipe(_gulpEslint2['default'].format('stylish')).pipe((0, _gulpIf2['default'])(!_serverJs2['default'].active, _gulpEslint2['default'].failOnError()));
 });
 
 _gulp2['default'].task('es6scripts', function () {});
