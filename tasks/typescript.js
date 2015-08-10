@@ -19,6 +19,7 @@ gulp.task('tslint', () => {
         tslint.report('prose')
       )
     )
+    .pipe(iff(bs.active, bs.stream()));
 });
 
 import sourcemaps from 'gulp-sourcemaps';

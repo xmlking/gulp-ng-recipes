@@ -10,16 +10,22 @@ import {ErrorHandler} from './errors';
 
 gulp.task('eslint', () => {
   return gulp.src(CONFIG.scripts.src)
-    .pipe(cached('jshint'))
+    .pipe(cached('eslint'))
     .pipe(eslint())
     .pipe(eslint.format('stylish'))
-    .pipe(iff(!bs.active, eslint.failOnError())
-    )
+    .pipe(
+      iff(bs.active,
+        bs.stream()),
+        eslint.failOnError()
+      )
 });
 
 gulp.task('es6scripts', () => {
-
+  return gulp.src(CONFIG.scripts.src)
+    .pipe(cached('es6scripts'))
+    .pipe(iff(bs.active, bs.stream()))
 });
+
 
 // alias
 gulp.task('lintjs', ['eslint']);

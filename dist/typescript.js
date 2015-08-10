@@ -40,7 +40,7 @@ var _tsconfigJson2 = _interopRequireDefault(_tsconfigJson);
 
 _gulp2['default'].task('tslint', function () {
   _serverJs2['default'].notify("This message will only last a second", 1000);
-  return _gulp2['default'].src(_globalsJs.CONFIG.scripts.src).pipe((0, _gulpCached2['default'])('tslint')).pipe((0, _gulpTslint2['default'])()).pipe((0, _gulpIf2['default'])(_serverJs2['default'].active, _gulpTslint2['default'].report('prose', { emitError: false }), _gulpTslint2['default'].report('prose')));
+  return _gulp2['default'].src(_globalsJs.CONFIG.scripts.src).pipe((0, _gulpCached2['default'])('tslint')).pipe((0, _gulpTslint2['default'])()).pipe((0, _gulpIf2['default'])(_serverJs2['default'].active, _gulpTslint2['default'].report('prose', { emitError: false }), _gulpTslint2['default'].report('prose'))).pipe((0, _gulpIf2['default'])(_serverJs2['default'].active, _serverJs2['default'].stream()));
 });
 
 _gulp2['default'].task('tsscripts', function () {
