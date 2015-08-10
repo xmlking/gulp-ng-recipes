@@ -19,7 +19,7 @@ gulp.task('serve', ['sass'], () => {
 
   gulp.watch(CONFIG.html.src, bs.reload);
   gulp.watch(CONFIG.sass.src, ['sass']);
-  gulp.watch(CONFIG.typescript.src, ['tslint']);
+  gulp.watch(CONFIG.scripts.src, ['lintjs']);
   gulp.watch(CONFIG.images.src, ['images']);
 });
 

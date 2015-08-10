@@ -10,7 +10,7 @@ import {ErrorHandler} from './errors';
 
 gulp.task('tslint', () => {
   bs.notify("This message will only last a second", 1000);
-  return gulp.src(CONFIG.typescript.src)
+  return gulp.src(CONFIG.scripts.src)
     .pipe(cached('tslint'))
     .pipe(tslint())
     .pipe(
@@ -30,7 +30,7 @@ gulp.task('tsscripts', () => {
     .pipe(sourcemaps.init())
     .pipe(ts(tsconfig.compilerOptions, undefined, ts.reporter.defaultReporter()))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(CONFIG.typescript.dest))
+    .pipe(gulp.dest(CONFIG.scripts.dest))
     .pipe(iff(bs.active, bs.stream()));
 });
 
@@ -40,10 +40,10 @@ gulp.task('scripts2', function() {
     .pipe(sourcemaps.init())
     .pipe(ts(tsProject));
   tsResult.dts
-    .pipe(gulp.dest(CONFIG.typescript.dest));
+    .pipe(gulp.dest(CONFIG.scripts.dest));
   return tsResult.js
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(CONFIG.typescript.dest));
+    .pipe(gulp.dest(CONFIG.scripts.dest));
 });
 
 // alias

@@ -83,11 +83,7 @@ sourcemaps:
       includeContent: false
 
 # scripts
-typescript:
-  src: "app/**/*.ts"
-  dest: .tmp
-
-# scripts
+# for typescript use "app/**/*.ts"
 scripts:
   src: "app/**/*.js"
   dest: .tmp

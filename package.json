@@ -1,12 +1,13 @@
 {
   "name": "gulp-ng-recipes",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A collection of gulp recipies.",
   "main": "gulpfile.babel.js",
   "scripts": {
     "test": "karma start",
     "build": "babel tasks --out-dir dist",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "postinstall": "sleep 1 && echo 'if you havent done before, copy node_modules/gulp-ng-recipes/tasks/config.yml to your projects tasks folder'"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,7 @@
     "url": "https://github.com/xmlking/gulp-ng-recipes/issues"
   },
   "homepage": "https://github.com/xmlking/gulp-ng-recipes#README",
-  "dependencies": {
+  "peerDependencies": {
     "babel-core": "^5.8.21",
     "babel-eslint": "^4.0.5",
     "browser-sync": "^2.8.1",
