@@ -40,18 +40,18 @@ var _tsconfigJson2 = _interopRequireDefault(_tsconfigJson);
 
 _gulp2['default'].task('tslint', function () {
   _serverJs2['default'].notify("This message will only last a second", 1000);
-  return _gulp2['default'].src(_globalsJs.CONFIG.typescript.src).pipe((0, _gulpCached2['default'])('tslint')).pipe((0, _gulpTslint2['default'])()).pipe((0, _gulpIf2['default'])(_serverJs2['default'].active, _gulpTslint2['default'].report('prose', { emitError: false }), _gulpTslint2['default'].report('prose')));
+  return _gulp2['default'].src(_globalsJs.CONFIG.scripts.src).pipe((0, _gulpCached2['default'])('tslint')).pipe((0, _gulpTslint2['default'])()).pipe((0, _gulpIf2['default'])(_serverJs2['default'].active, _gulpTslint2['default'].report('prose', { emitError: false }), _gulpTslint2['default'].report('prose')));
 });
 
 _gulp2['default'].task('tsscripts', function () {
-  return _gulp2['default'].src(_tsconfigJson2['default'].filesGlob).pipe(_gulpSourcemaps2['default'].init()).pipe((0, _gulpTypescript2['default'])(_tsconfigJson2['default'].compilerOptions, undefined, _gulpTypescript2['default'].reporter.defaultReporter())).pipe(_gulpSourcemaps2['default'].write()).pipe(_gulp2['default'].dest(_globalsJs.CONFIG.typescript.dest)).pipe((0, _gulpIf2['default'])(_serverJs2['default'].active, _serverJs2['default'].stream()));
+  return _gulp2['default'].src(_tsconfigJson2['default'].filesGlob).pipe(_gulpSourcemaps2['default'].init()).pipe((0, _gulpTypescript2['default'])(_tsconfigJson2['default'].compilerOptions, undefined, _gulpTypescript2['default'].reporter.defaultReporter())).pipe(_gulpSourcemaps2['default'].write()).pipe(_gulp2['default'].dest(_globalsJs.CONFIG.scripts.dest)).pipe((0, _gulpIf2['default'])(_serverJs2['default'].active, _serverJs2['default'].stream()));
 });
 
 _gulp2['default'].task('scripts2', function () {
   var tsProject = _gulpTypescript2['default'].createProject('tsconfig.json', { sortOutput: true });
   var tsResult = tsProject.src().pipe(_gulpSourcemaps2['default'].init()).pipe((0, _gulpTypescript2['default'])(tsProject));
-  tsResult.dts.pipe(_gulp2['default'].dest(_globalsJs.CONFIG.typescript.dest));
-  return tsResult.js.pipe(_gulpSourcemaps2['default'].write()).pipe(_gulp2['default'].dest(_globalsJs.CONFIG.typescript.dest));
+  tsResult.dts.pipe(_gulp2['default'].dest(_globalsJs.CONFIG.scripts.dest));
+  return tsResult.js.pipe(_gulpSourcemaps2['default'].write()).pipe(_gulp2['default'].dest(_globalsJs.CONFIG.scripts.dest));
 });
 
 // alias

@@ -33,7 +33,7 @@ _gulp2['default'].task('serve', ['sass'], function () {
 
   _gulp2['default'].watch(_globalsJs.CONFIG.html.src, bs.reload);
   _gulp2['default'].watch(_globalsJs.CONFIG.sass.src, ['sass']);
-  _gulp2['default'].watch(_globalsJs.CONFIG.typescript.src, ['tslint']);
+  _gulp2['default'].watch(_globalsJs.CONFIG.scripts.src, ['lintjs']);
   _gulp2['default'].watch(_globalsJs.CONFIG.images.src, ['images']);
 });
 
