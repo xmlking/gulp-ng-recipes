@@ -9,7 +9,7 @@
     "prepublish": "npm run build",
     "predeploy": "echo im about to deploy",
     "preinstall": "echo ignore peerDependencies warnings.., relax! this process will take some time",
-    "postinstall": "If you havent done before, copy node_modules/gulp-ng-recipes/tasks/config.yml to your projects tasks folder and make any necessary changes"
+    "postinstall": "echo If you havent done before, copy node_modules/gulp-ng-recipes/tasks/config.yml to your projects tasks folder and make any necessary changes"
   },
   "repository": {
     "type": "git",
