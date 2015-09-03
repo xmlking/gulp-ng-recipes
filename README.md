@@ -4,6 +4,7 @@ A collection of gulp tasks to share with all your projects.
 
 When gulp 4 is released, gulp-ng-recipes will be rewritten to support [custom registries](https://github.com/phated/undertaker#custom-registries).
 
+Sample App : [ng-starter-kit](https://github.com/xmlking/ng-starter-kit)
 
 This module comes with `gulp-sass`. if you prefer `gulp-ruby-sass` then install:
 
