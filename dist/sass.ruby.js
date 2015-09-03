@@ -30,6 +30,14 @@ var _serverJs2 = _interopRequireDefault(_serverJs);
 
 var _globalsJs = require('./globals.js');
 
+// import scsslint from 'gulp-scss-lint';
+// Lint SASS.
+_gulp2['default'].task('lintsass', function () {
+  //return gulp.src(CONFIG.sass.src)
+  //    .pipe(cache('lintsass'))
+  //    .pipe(scsslint());
+});
+
 //TODO minifyCss
 _gulp2['default'].task('sass', function () {
 
