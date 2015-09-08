@@ -1,6 +1,6 @@
 {
   "name": "gulp-ng-recipes",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "A collection of gulp recipies.",
   "main": "gulpfile.babel.js",
   "scripts": {
@@ -27,18 +27,14 @@
   "homepage": "https://github.com/xmlking/gulp-ng-recipes#README",
   "peerDependencies": {
     "babel-core": "^5.8.23",
-    "babel-eslint": "^4.1.1",
     "browser-sync": "^2.9.3",
     "del": "^2.0.1",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.0.1",
     "gulp-cached": "^1.1.0",
-    "gulp-debug": "^2.0.1",
-    "gulp-eslint": "^1.0.0",
     "gulp-gh-pages": "^0.5.2",
     "gulp-if": "^1.2.5",
     "gulp-imagemin": "^2.3.0",
-    "gulp-sass": "^2.0.4",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-tslint": "^3.2.0",
     "gulp-typescript": "^2.8.2",
@@ -49,5 +45,12 @@
     "run-sequence": "^1.1.2",
     "sw-precache": "^2.0.0",
     "yargs": "^3.23.0"
+  },
+  "optionalDependencies": {
+    "gulp-debug": "^2.0.1",
+    "babel-eslint": "^4.1.1",
+    "gulp-eslint": "^1.0.0",
+    "gulp-sass": "^2.0.4",
+    "gulp-ruby-sass": "^1.4.0"
   }
 }

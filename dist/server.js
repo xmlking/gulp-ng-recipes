@@ -24,14 +24,29 @@ var _globalsJs = require('./globals.js');
 
 var bs = _browserSync2['default'].create('Static Server');
 
-var proxyTarget = 'http://localhost:8050'; // The location of your backend
-var proxyApiPrefix = 'v1'; // The element in the URL which differentiate between API request and static file request
+// middleware
+/**
+ * target - The location of your backend
+ * prefix - The element in the URL which differentiate between API request and static file request
+ */
+
+var _options = (0, _globalsJs.options)('apiProxy');
+
+var target = _options.target;
+var prefix = _options.prefix;
 
 var proxy = _httpProxy2['default'].createProxyServer({
-  target: proxyTarget
+  target: target
 });
 
-//middleware
+var proxyMiddleware = function proxyMiddleware(req, res, next) {
+  if (req.url.indexOf(prefix) !== -1) {
+    proxy.web(req, res);
+  } else {
+    next();
+  }
+};
+
 var cors = function cors(req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With');
@@ -39,17 +54,11 @@ var cors = function cors(req, res, next) {
   next();
 };
 
-var proxyMiddleware = function proxyMiddleware(req, res, next) {
-  if (req.url.indexOf(proxyApiPrefix) !== -1) {
-    proxy.web(req, res);
-  } else {
-    next();
-  }
-};
-
 _gulp2['default'].task('serve', ['sass'], function () {
   var ops = (0, _globalsJs.options)('browserSync');
-  ops.middleware = [proxyMiddleware];
+  if (target && prefix) {
+    ops.middleware = [proxyMiddleware];
+  }
   bs.init(ops);
 
   _gulp2['default'].watch(_globalsJs.CONFIG.html.src, bs.reload);
