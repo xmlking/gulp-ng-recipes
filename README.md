@@ -12,3 +12,8 @@ This module comes with `gulp-sass`. if you prefer `gulp-ruby-sass` then install:
 npm install gulp-ruby-sass --save-dev 
 ```
 and add `import 'gulp-ng-recipes/dist/sass.js';` to your `gulpfile.babel.js`
+
+
+###  Issues 
+* browser-sync  2.9.3 error with iojs 3.3.0
+* if you have issues with gulp-sass (on windows!), manually install 'gulp-ruby-sass' and use sass.ruby.js recipe provided.  

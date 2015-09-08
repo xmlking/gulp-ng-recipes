@@ -48,6 +48,13 @@ browserSync:
     release:
       notify: false
 
+# http-proxy
+apiProxy:
+  options:
+    debug:
+      target: http://localhost:8050
+      prefix: v1
+
 # css
 sass:
   src:

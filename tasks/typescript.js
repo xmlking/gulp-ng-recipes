@@ -1,5 +1,7 @@
 import gulp from 'gulp';
 import tslint from 'gulp-tslint';
+import ts from 'gulp-typescript';
+import sourcemaps from 'gulp-sourcemaps';
 import iff from 'gulp-if';
 import cached from 'gulp-cached';
 
@@ -22,20 +24,7 @@ gulp.task('tslint', () => {
     .pipe(iff(bs.active, bs.stream()));
 });
 
-import sourcemaps from 'gulp-sourcemaps';
-import ts from 'gulp-typescript';
-import tsconfig from '../tsconfig.json';
-
-gulp.task('tsscripts', () => {
-  return gulp.src(tsconfig.filesGlob)
-    .pipe(sourcemaps.init())
-    .pipe(ts(tsconfig.compilerOptions, undefined, ts.reporter.defaultReporter()))
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest(CONFIG.scripts.dest))
-    .pipe(iff(bs.active, bs.stream()));
-});
-
-gulp.task('scripts2', function() {
+gulp.task('tsscripts', function() {
   let tsProject = ts.createProject('tsconfig.json', { sortOutput: true });
   let tsResult = tsProject.src()
     .pipe(sourcemaps.init())
@@ -50,4 +39,3 @@ gulp.task('scripts2', function() {
 // alias
 gulp.task('lintjs', ['tslint']);
 gulp.task('scripts', ['tsscripts']);
-
