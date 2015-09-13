@@ -5,5 +5,6 @@ import './gulp/sass';
 import './gulp/images';
 import './gulp/fonts';
 import './gulp/offline';
+import './gulp/html';
 import './gulp/build';
 import './gulp/gpdeploy';

@@ -25,11 +25,6 @@ build:
   temp: .tmp
   dest: dist
 
-# html
-html:
-  src: "src/**/*.html"
-  dest: dist
-
 # server
 browserSync:
   options:
@@ -106,6 +101,20 @@ fonts:
   dest: "dist/assets/fonts"
   options:
     includeParents: 0
+
+# html
+html:
+  src: "src/index.html"
+  dest: dist
+  options:
+    usePrefix: false
+    patterns:
+      - match: "jspm_packages/system.js"
+        replacement: "build.js"
+      - match: "<!-- PROD"
+        replacement: ""
+      - match: "END -->"
+        replacement: ""
 
 # sw-precache
 swPrecache:

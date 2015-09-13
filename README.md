@@ -38,6 +38,7 @@ import 'gulp-ng-recipes/dist/typescript';
 import 'gulp-ng-recipes/dist/sass';
 import 'gulp-ng-recipes/dist/images';
 import 'gulp-ng-recipes/dist/fonts';
+import 'gulp-ng-recipes/dist/html';
 import 'gulp-ng-recipes/dist/offline';
 import 'gulp-ng-recipes/dist/build';
 import 'gulp-ng-recipes/dist/gpdeploy';
