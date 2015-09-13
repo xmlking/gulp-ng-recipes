@@ -44,7 +44,7 @@ import 'gulp-ng-recipes/dist/gpdeploy';
 ```
 
 ### gulp config
-we support cascaded configuration files with environment specific overwrites based on `NODE_ENV` you pass in command-line i.e., `NODE_ENV=stage gulp clean`
+we support cascaded configuration files with environment specific overwrites based on `NODE_ENV` you pass in command-line i.e., `gulp serve --env=prod`
 
 copy sample config files from `node_modules/gulp-ng-recipes/gulp/config` to your project `gulp/config` folder.
  
