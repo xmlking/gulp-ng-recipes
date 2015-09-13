@@ -12,7 +12,7 @@ Node: this module assumes you are using typescript with JSPM by default. you can
 ### Installation 
 Prerequisites: node.js 4.x , ruby , `gem install scss_lint`
 
-SASS: for windows install `gulp-ruby-sass` npm module, for linux or Mac use `gulp-sass`.
+**SASS**: for windows install `gulp-ruby-sass` npm module, for linux or Mac use `gulp-sass`.
 
   ```bash
   # install prerequisite globe npm modules 
@@ -31,20 +31,21 @@ create `gulpfile.babel.js` file in your project root.
 Add recipes you needed as shown below: 
 
 ```js
-import 'gulp-ng-recipes/dist/globals.js';
-import 'gulp-ng-recipes/dist/server.js';
-import 'gulp-ng-recipes/dist/typescript.js';
-// if you are using ruby sass, use: import 'gulp-ng-recipes/dist/sass.ruby.js';
-import 'gulp-ng-recipes/dist/sass.js';
-import 'gulp-ng-recipes/dist/images.js';
-import 'gulp-ng-recipes/dist/offline.js';
-import 'gulp-ng-recipes/dist/build.js';
-import 'gulp-ng-recipes/dist/gpdeploy.js';
+import 'gulp-ng-recipes/dist/globals';
+import 'gulp-ng-recipes/dist/server';
+import 'gulp-ng-recipes/dist/typescript';
+// if you are using ruby sass, use: import 'gulp-ng-recipes/dist/sass.ruby';
+import 'gulp-ng-recipes/dist/sass';
+import 'gulp-ng-recipes/dist/images';
+import 'gulp-ng-recipes/dist/fonts';
+import 'gulp-ng-recipes/dist/offline';
+import 'gulp-ng-recipes/dist/build';
+import 'gulp-ng-recipes/dist/gpdeploy';
 ```
- 
- ### gulp config
- we support cascaded configuration files with environment specific overwrites based on `NODE_ENV` you pass in command-line i.e., `NODE_ENV=stage gulp clean`
- copy sample config files from `node_modules/gulp-ng-recipes/gulp/config` to your project `gulp/config` folder.
+
+### gulp config
+we support cascaded configuration files with environment specific overwrites based on `NODE_ENV` you pass in command-line i.e., `NODE_ENV=stage gulp clean`
+copy sample config files from `node_modules/gulp-ng-recipes/gulp/config` to your project `gulp/config` folder.
  
  
 ###  Issues 
