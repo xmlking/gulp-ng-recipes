@@ -1,6 +1,6 @@
 {
   "name": "gulp-ng-recipes",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A collection of gulp recipies.",
   "main": "gulpfile.babel.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "prepublish": "npm run build",
     "predeploy": "echo about to deploy",
     "preinstall": "echo ignore peerDependencies warnings.., relax! this process will take some time",
-    "postinstall": "echo If you havent done before, copy node_modules/gulp-ng-recipes/gulp/config to your project's gulp/config folder and make any necessary changes"
+    "postinstall": "echo If you havent done before, copy node_modules/gulp-ng-recipes/gulp/config to your projects gulp/config folder and make any necessary changes"
   },
   "repository": {
     "type": "git",

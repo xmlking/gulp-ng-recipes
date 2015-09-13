@@ -14,10 +14,6 @@ var _jspm = require('jspm');
 
 var _jspm2 = _interopRequireDefault(_jspm);
 
-var _gulpReplace = require('gulp-replace');
-
-var _gulpReplace2 = _interopRequireDefault(_gulpReplace);
-
 var _runSequence = require('run-sequence');
 
 var _runSequence2 = _interopRequireDefault(_runSequence);
@@ -38,10 +34,6 @@ _gulp2['default'].task('clean', function (cb) {
 });
 
 _gulp2['default'].task('lint', ['lintjs', 'lintsass']);
-
-_gulp2['default'].task('html', function () {
-  return _gulp2['default'].src('src/index.html').pipe((0, _gulpReplace2['default'])('jspm_packages/system.js', 'build.js')).pipe(_gulp2['default'].dest(dest));
-});
 
 _gulp2['default'].task('extras', function () {
   return _gulp2['default'].src(extras, { dot: true }).pipe(_gulp2['default'].dest(dest));
