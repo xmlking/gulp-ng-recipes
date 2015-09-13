@@ -14,36 +14,44 @@ var _jspm = require('jspm');
 
 var _jspm2 = _interopRequireDefault(_jspm);
 
+var _gulpReplace = require('gulp-replace');
+
+var _gulpReplace2 = _interopRequireDefault(_gulpReplace);
+
 var _runSequence = require('run-sequence');
 
 var _runSequence2 = _interopRequireDefault(_runSequence);
 
-var _globalsJs = require('./globals.js');
+var _config = require('config');
+
+var _config2 = _interopRequireDefault(_config);
+
+var _config$get = _config2['default'].get('build');
+
+var src = _config$get.src;
+var temp = _config$get.temp;
+var dest = _config$get.dest;
+var extras = _config$get.extras;
 
 _gulp2['default'].task('clean', function (cb) {
-  (0, _del2['default'])(['.tmp', 'dist'], { dot: true }, cb);
+  return (0, _del2['default'])([temp, dest], { dot: true }, cb);
 });
 
 _gulp2['default'].task('lint', ['lintjs', 'lintsass']);
 
-// Scan your HTML for assets & optimize them
 _gulp2['default'].task('html', function () {
-  _gulp2['default'].src('app/index.html').pipe(replace('jspm_packages/system.js', 'build.js')).pipe(replace('<script src="config.js"></script>', '')).pipe(replace('<script>System.import(\'app\');</script>', '')).pipe(_gulp2['default'].dest(global.paths.dist));
+  return _gulp2['default'].src('src/index.html').pipe((0, _gulpReplace2['default'])('jspm_packages/system.js', 'build.js')).pipe(_gulp2['default'].dest(dest));
 });
 
-_gulp2['default'].task('fonts', function () {
-  return _gulp2['default'].src(['app/assets/fonts/**']).pipe(_gulp2['default'].dest('dist/assets/fonts'));
+_gulp2['default'].task('extras', function () {
+  return _gulp2['default'].src(extras, { dot: true }).pipe(_gulp2['default'].dest(dest));
 });
 
-_gulp2['default'].task('copy', function () {
-  return _gulp2['default'].src(['app/assets/*', '!app/*.html'], { dot: true }).pipe(_gulp2['default'].dest('dist'));
-});
-
-_gulp2['default'].task('bundle', function () {
+_gulp2['default'].task('bundle', ['sass'], function () {
   _jspm2['default'].setPackagePath('.');
-  return _jspm2['default'].bundle('app/app.ts', 'dist/build.js', { mangle: false });
+  return _jspm2['default'].bundle('src', 'dist/build.js', { mangle: false });
 });
 
-_gulp2['default'].task('default', ['clean'], function (cb) {
-  (0, _runSequence2['default'])('sass', ['lint', 'html', 'scripts', 'images', 'fonts', 'copy'], 'generate-service-worker', cb);
+_gulp2['default'].task('default', function (cb) {
+  (0, _runSequence2['default'])('clean', 'lint', 'bundle', ['images', 'fonts', 'extras', 'html'], 'generate-service-worker', cb);
 });

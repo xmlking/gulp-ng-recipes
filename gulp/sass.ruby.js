@@ -1,37 +1,37 @@
 import gulp from 'gulp';
 import sass from 'gulp-ruby-sass';
+import scsslint from 'gulp-scss-lint';
 import sourcemaps from 'gulp-sourcemaps'
 import autoprefixer from 'gulp-autoprefixer';
 import iff from 'gulp-if';
 //import debug from 'gulp-debug';
-
 import bs from './server.js';
-import {CONFIG, options} from './globals.js';
+import config from 'config';
 
+let {src, options, dest} = config.get('sass');
 
-// import scsslint from 'gulp-scss-lint';
 // Lint SASS.
 gulp.task('lintsass', () => {
-  //return gulp.src(CONFIG.sass.src)
-  //    .pipe(cache('lintsass'))
-  //    .pipe(scsslint());
+  return gulp.src(src)
+    .pipe(cached('lintsass'))
+    .pipe(scsslint());
 });
 
 //TODO minifyCss
-gulp.task('sass', function() {
+gulp.task('sass', () => {
 
-  return sass(CONFIG.sass.src,  {
+  return sass(src,  {
                         style: 'expanded',
                         precision: 10,
                         sourcemap: true
                       })
       .on('error', sass.logError)
-      .pipe(autoprefixer(CONFIG.sass.autoprefixer))
+      .pipe(autoprefixer(config.get('sass.autoprefixer')))
       .pipe(sourcemaps.write('.', {
         includeContent: false,
         sourceRoot: '.'
       }))
-      .pipe(gulp.dest(CONFIG.sass.dest))
+      .pipe(gulp.dest(dest))
       .pipe(iff(bs.active, bs.stream()))
 });
 

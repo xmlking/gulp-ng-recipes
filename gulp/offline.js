@@ -4,9 +4,8 @@
 import gulp from 'gulp';
 import swPrecache from 'sw-precache';
 import path from 'path';
-import {CONFIG, options} from './globals.js';
+import config from 'config';
 
 gulp.task('generate-service-worker', callback => {
-  const rootDir = optimize ? 'dist' : 'app';
-  swPrecache.write(path.join(rootDir, 'service-worker.js'), options('swPrecache'), callback);
+  swPrecache.write(path.join(config.get('swPrecache.dest'), 'service-worker.js'), config.get('swPrecache.options'), callback);
 });

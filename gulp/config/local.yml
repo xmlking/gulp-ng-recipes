@@ -1,0 +1,15 @@
+# ===================================================================
+# Keep sensitive config data in local.yml file that SysOps can
+# source at runtime.
+#
+# Don't check-in this file into Source Code Control System (SCCS)
+# ===================================================================
+
+
+GH_TOKEN:
+GH_USERNAME:
+
+# server
+browserSync:
+  options:
+    logLevel: info

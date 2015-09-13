@@ -17,9 +17,10 @@ var _path = require('path');
 
 var _path2 = _interopRequireDefault(_path);
 
-var _globalsJs = require('./globals.js');
+var _config = require('config');
+
+var _config2 = _interopRequireDefault(_config);
 
 _gulp2['default'].task('generate-service-worker', function (callback) {
-  var rootDir = optimize ? 'dist' : 'app';
-  _swPrecache2['default'].write(_path2['default'].join(rootDir, 'service-worker.js'), (0, _globalsJs.options)('swPrecache'), callback);
+  _swPrecache2['default'].write(_path2['default'].join(_config2['default'].get('swPrecache.dest'), 'service-worker.js'), _config2['default'].get('swPrecache.options'), callback);
 });

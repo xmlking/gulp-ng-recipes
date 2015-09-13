@@ -1,28 +1,38 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
-exports.options = options;
-var CONFIG = require('js-yaml').safeLoad(require('fs').readFileSync('tasks/config.yml', 'utf8'));
-exports.CONFIG = CONFIG;
+process.env.NODE_CONFIG_DIR = 'gulp/config';
+
 var args = require('yargs').argv;
+global.env = process.env.NODE_ENV = args.env || process.env.NODE_ENV || 'dev';
+console.info('Using Env:', env);
 
-exports.args = args;
-// Get environment, for environment-specific activities
-global.env = args.env || process.env.NODE_ENV;
-global.optimize = env === 'PROD' || args.optimize;
-console.log('Using Env:', env);
-console.log('Optimized:', optimize);
+//import config from 'config';
+var config = require('config');
 
-function options(type) {
-  if (CONFIG[type] && CONFIG[type].options) {
-    var opts = CONFIG[type].options;
-    var mergedOpts = Object.assign({}, opts, opts[optimize ? 'release' : 'debug']);
-    delete mergedOpts.release;
-    delete mergedOpts.debug;
-    return mergedOpts;
-  } else {
-    return {};
+console.info('Loading gulp config from:');
+var _iteratorNormalCompletion = true;
+var _didIteratorError = false;
+var _iteratorError = undefined;
+
+try {
+  for (var _iterator = config.util.getConfigSources()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+    var conf = _step.value;
+
+    console.info('\t' + conf.name);
+  }
+} catch (err) {
+  _didIteratorError = true;
+  _iteratorError = err;
+} finally {
+  try {
+    if (!_iteratorNormalCompletion && _iterator['return']) {
+      _iterator['return']();
+    }
+  } finally {
+    if (_didIteratorError) {
+      throw _iteratorError;
+    }
   }
 }
+
+;

@@ -1,0 +1,54 @@
+# devlopment config
+
+# ----------------------------------------
+# CORE PROPERTIES
+# ----------------------------------------
+
+# build
+
+# html
+
+# server
+browserSync:
+  options:
+    notify: false
+    logLevel: error
+
+# http-proxy-middleware
+proxy:
+  context: "/v1"
+  options:
+    target: "http://localhost:8050"
+
+# css
+sass:
+  options:
+    outputStyle: "compressed"
+    errLogToConsole: false
+
+# sourcemaps
+sourcemaps:
+  options:
+    includeContent: false
+
+# scripts
+
+# images
+
+# sw-precache
+swPrecache:
+  dest: dist
+  options:
+    handleFetch: true
+    staticFileGlobs:
+      - "dist/fonts/**/*.woff"
+      - "dist/images/**/*"
+      - "dist/styles/**/*.css"
+      - "dist/app/**/*.js"
+      - "dist/app/*.{html,json}"
+    stripPrefix: "dist/"
+    verbose: false
+
+# JSPM Bundler
+
+# deploy

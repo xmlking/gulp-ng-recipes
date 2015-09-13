@@ -1,8 +1,8 @@
 import deploy from 'gulp-gh-pages';
 import gulp from 'gulp';
-import {CONFIG, options} from './globals.js';
+import config from 'config';
 
 gulp.task('deploy', () => {
-  return gulp.src(CONFIG.deploy.src)
+  return gulp.src(config.get('deploy.src'))
     .pipe(deploy());
 });

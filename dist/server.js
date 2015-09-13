@@ -10,61 +10,47 @@ var _gulp = require('gulp');
 
 var _gulp2 = _interopRequireDefault(_gulp);
 
-var _httpProxy = require('http-proxy');
-
-var _httpProxy2 = _interopRequireDefault(_httpProxy);
-
 var _browserSync = require('browser-sync');
 
 var _browserSync2 = _interopRequireDefault(_browserSync);
 
-//import historyApiFallback 'connect-history-api-fallback';
+var _browserSyncSpa = require('browser-sync-spa');
 
-var _globalsJs = require('./globals.js');
+var _browserSyncSpa2 = _interopRequireDefault(_browserSyncSpa);
+
+var _httpProxyMiddleware = require('http-proxy-middleware');
+
+var _httpProxyMiddleware2 = _interopRequireDefault(_httpProxyMiddleware);
+
+var _config = require('config');
+
+var _config2 = _interopRequireDefault(_config);
 
 var bs = _browserSync2['default'].create('Static Server');
 
 // middleware
-/**
- * target - The location of your backend
- * prefix - The element in the URL which differentiate between API request and static file request
- */
 
-var _options = (0, _globalsJs.options)('apiProxy');
+var _config$get = _config2['default'].get('proxy');
 
-var target = _options.target;
-var prefix = _options.prefix;
+var context = _config$get.context;
+var options = _config$get.options;
 
-var proxy = _httpProxy2['default'].createProxyServer({
-  target: target
-});
-
-var proxyMiddleware = function proxyMiddleware(req, res, next) {
-  if (req.url.indexOf(prefix) !== -1) {
-    proxy.web(req, res);
-  } else {
-    next();
-  }
-};
-
-var cors = function cors(req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST', 'OPTIONS');
-  next();
-};
+// enable HTML5 mode
+bs.use((0, _browserSyncSpa2['default'])({
+  selector: "[ng-app]"
+}));
 
 _gulp2['default'].task('serve', ['sass'], function () {
-  var ops = (0, _globalsJs.options)('browserSync');
-  if (target && prefix) {
-    ops.middleware = [proxyMiddleware];
+  var ops = _config2['default'].get('browserSync.options');
+  if (context) {
+    ops.middleware = [(0, _httpProxyMiddleware2['default'])(context, options)];
   }
   bs.init(ops);
 
-  _gulp2['default'].watch(_globalsJs.CONFIG.html.src, bs.reload);
-  _gulp2['default'].watch(_globalsJs.CONFIG.sass.src, ['sass']);
-  _gulp2['default'].watch(_globalsJs.CONFIG.scripts.src, ['lintjs']);
-  _gulp2['default'].watch(_globalsJs.CONFIG.images.src, ['images']);
+  _gulp2['default'].watch(_config2['default'].get('html.src'), bs.reload);
+  _gulp2['default'].watch(_config2['default'].get('sass.src'), ['lintsass', 'sass']);
+  _gulp2['default'].watch(_config2['default'].get('scripts.src'), ['lintjs']);
+  _gulp2['default'].watch(_config2['default'].get('images.src'), ['images']);
 });
 
 exports['default'] = bs;

@@ -11,55 +11,55 @@
 # CORE PROPERTIES
 # ----------------------------------------
 
-# Paths
-paths:
-  src: app
+# build
+build:
+  src: src
   extras:
-    - "app/.htaccess"
-    - "app/config.yml"
-    - "app/favicon.ico"
-    - "app/robots.txt"
-    - "app/**/*.json"
-    - ".tmp/*/**/*.css"
-    - "app/**/*.tpl.html"
+    - "src/.htaccess"
+    - "src/favicon.ico"
+    - "src/robots.txt"
+    - "src/**/*.json"
+    - "src/**/*.html"
+    - "!src/index.html"
+    - ".tmp/**/*.css"
   temp: .tmp
   dest: dist
 
 # html
 html:
-  src: "app/**/*.html"
+  src: "src/**/*.html"
   dest: dist
 
 # server
 browserSync:
   options:
-    logPrefix: 'SPA'
+    logPrefix: "SPA"
+    browser: "google chrome"
+    notify: true
+    logLevel: debug
     server:
       baseDir:
-        - '.tmp'
-        - 'app'
-        - '.'
+        - ".tmp"
+        - "src"
+        - "."
       index: "index.html"
       routes:
-        "/source": "/app"
-    debug:
-      browser: "google chrome"
-#      logLevel: "debug"
-    release:
-      notify: false
+        "/source": "/src/app"
 
-# http-proxy
-apiProxy:
+# http-proxy-middleware
+proxy:
+  context: "/v1"
   options:
-    debug:
-      target: http://localhost:8050
-      prefix: v1
+    target: "http://localhost:8050"
+    ws: false
+    proxyTable:
+      "dev.localhost:3000" : "http://localhost:8050"
+      "localhost:3000/api" : "http://localhost:8003"
 
 # css
 sass:
   src:
-    - "app/**/*.scss"
-    - "!app/assets/styles/**/_*.scss"
+    - "src/**/*.scss"
   dest: .tmp
   autoprefixer:
     - "ie >= 10"
@@ -73,77 +73,67 @@ sass:
     - "bb >= 10"
   options:
     precision: 10
-    debug:
-      outputStyle: "nested"
-      errLogToConsole: true
-    release:
-      outputStyle: "compressed"
+    outputStyle: "nested"
+    errLogToConsole: true
 
 # sourcemaps
 sourcemaps:
   dest: .maps
   options:
-    sourceRoot: "/app"
-    debug:
-      includeContent: true
-    release:
-      includeContent: false
+    sourceRoot: "src"
+    includeContent: true
 
 # scripts
 # for typescript use "app/**/*.ts"
 scripts:
-  src: "app/**/*.js"
+  src: "src/app/**/*.ts"
   dest: .tmp
 
 # images
 images:
-  src: "app/assets/images/**/*.{png,gif,jpg,cur}"
-  dest: dist
+  src: "src/assets/images/**/*"
+  dest: dist/assets/images
   options:
     optimizationLevel: 3
     progressive: true
     interlaced: true
 
+# fonts
+fonts:
+  src:
+    - "src/assets/fonts/**/*.{eot,svg,ttf,woff,woff2}"
+    - "jspm_packages/**/*.{woff,woff2}"
+  dest: "dist/assets/fonts"
+  options:
+    includeParents: 0
+
 # sw-precache
 swPrecache:
+  dest: .tmp
   options:
     cacheId: "spa-starter-kit"
 #    dynamicUrlToDependencies:
 #      "dynamic/page1":
-#        - "app/views/layout.jade"
-#        - "app/views/page1.jade"
+#        - "src/app/views/layout.jade"
+#        - "src/app/views/page1.jade"
 #      "dynamic/page2":
-#        - "app/views/layout.jade"
-#        - "app/views/page2.jade"
-    debug:
-      handleFetch: false
-      staticFileGlobs:
-        - "app/assets/fonts/**/*.woff"
-        - "app/assets/images/**/*"
-        - "app/assets/styles/**/*.css"
-        - "app/**/*.js"
-        - "app/*.{html,json}"
-      stripPrefix: "app/"
-      verbose: true
-    release:
-      handleFetch: true
-      staticFileGlobs:
-        - "dist/assets/fonts/**/*.woff"
-        - "dist/assets/images/**/*"
-        - "dist/assets/styles/**/*.css"
-        - "dist/**/*.js"
-        - "dist/*.{html,json}"
-      stripPrefix: "dist/"
-
-# JSPM Bundler
-build:
-  dest: dist
+#        - "src/app/views/layout.jade"
+#        - "src/app/views/page2.jade"
+    handleFetch: false
+    staticFileGlobs:
+      - "src/assets/fonts/**/*.woff"
+      - "src/assets/images/**/*"
+      - "src/**/*.css"
+      - "src/app/**/*.js"
+      - "src/**/*.{html,json}"
+    stripPrefix: "src/"
+    verbose: true
 
 # Require JS Bundler
 buildProfile:
-  mainConfigFile: app/require.config.js
+  mainConfigFile: jspm.config.js
   appDir: .tmp
-  baseUrl: '.'
+  baseUrl: "."
   removeCombined: true
   findNestedDependencies: true
   dir: dist
@@ -183,17 +173,9 @@ karmaCommonConf:
     - traceur
   files:
     - test/test-main.js
-    - pattern: "app/**/*.js"
+    - pattern: "src/app/**/*.js"
       included: false
     - pattern: "test/unit/**/*.js"
-      included: false
-    - pattern: "./bower_components/di/dist/amd/*.js"
-      included: false
-    - pattern: ./bower_components/assert/dist/amd/assert.js
-      included: false
-    - pattern: ./bower_components/diary/dist/amd/diary.js
-      included: false
-    - pattern: ./bower_components/harmony-reflect/reflect.js
       included: false
   exclude:
     - app/bootstrap.js
@@ -205,7 +187,7 @@ karmaCommonConf:
   reporters:
     - progress
   preprocessors:
-    "app/**/*.js":
+    "src/app/**/*.js":
       - traceur
     "test/unit/**/*.js":
       - traceur
