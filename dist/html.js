@@ -11,4 +11,3 @@ gulp.task('html', () => {
         .pipe(replace(options))
         .pipe(gulp.dest(dest));
 });
-//# sourceMappingURL=html.js.map

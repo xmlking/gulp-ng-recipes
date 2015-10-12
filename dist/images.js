@@ -12,4 +12,3 @@ gulp.task('images', () => {
         .pipe(gulp.dest(dest))
         .pipe(iff(bs.active, bs.stream()));
 });
-//# sourceMappingURL=images.js.map

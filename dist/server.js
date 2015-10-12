@@ -20,4 +20,3 @@ gulp.task('serve', ['sass'], () => {
     gulp.watch(config.get('images.src'), ['images']);
 });
 export default bs;
-//# sourceMappingURL=server.js.map

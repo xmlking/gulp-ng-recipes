@@ -8,4 +8,3 @@ gulp.task('sasslint', () => {
         .pipe(cached('sasslint'))
         .pipe(scsslint());
 });
-//# sourceMappingURL=sasslint.js.map

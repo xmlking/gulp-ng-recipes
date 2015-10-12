@@ -5,4 +5,3 @@ gulp.task('fonts', () => {
     return gulp.src(src)
         .pipe(gulp.dest(dest));
 });
-//# sourceMappingURL=fonts.js.map

@@ -5,4 +5,3 @@ import * as config from 'config';
 gulp.task('generate-service-worker', callback => {
     swPrecache.write(path.join(config.get('swPrecache.dest'), 'service-worker.js'), config.get('swPrecache.options'), callback);
 });
-//# sourceMappingURL=offline.js.map

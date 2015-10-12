@@ -13,4 +13,3 @@ gulp.task('tslint', () => {
         .pipe(iff(bs.active, tslint.report('prose', { emitError: false }), tslint.report('prose')))
         .pipe(iff(bs.active, bs.stream()));
 });
-//# sourceMappingURL=tslint.js.map

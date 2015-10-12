@@ -14,4 +14,3 @@ gulp.task('typescript', function () {
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(dest));
 });
-//# sourceMappingURL=typescript.js.map

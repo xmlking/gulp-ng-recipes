@@ -10,7 +10,7 @@
     "noLib": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "listFiles": true,
     "newLine": "LF",
     "outDir": "dist"

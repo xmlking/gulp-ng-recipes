@@ -5,4 +5,3 @@ gulp.task('deploy', () => {
     return gulp.src(config.get('deploy.src'))
         .pipe(deploy());
 });
-//# sourceMappingURL=gpdeploy.js.map

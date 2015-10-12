@@ -17,4 +17,3 @@ gulp.task('sass', () => {
         .pipe(gulp.dest(dest))
         .pipe(iff(bs.active, bs.stream()));
 });
-//# sourceMappingURL=sass.js.map

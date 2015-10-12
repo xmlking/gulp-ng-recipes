@@ -8,4 +8,3 @@ for (let conf of config.util.getConfigSources()) {
     console.info(`\t${conf.name}`);
 }
 ;
-//# sourceMappingURL=globals.js.map

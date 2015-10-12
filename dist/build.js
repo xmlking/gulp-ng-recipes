@@ -19,4 +19,3 @@ gulp.task('bundle', ['sass'], () => {
 gulp.task('default', cb => {
     runSequence('clean', 'lint', 'bundle', ['images', 'fonts', 'extras', 'html'], 'generate-service-worker', cb);
 });
-//# sourceMappingURL=build.js.map
