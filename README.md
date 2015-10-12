@@ -9,7 +9,6 @@ Sample Project : [spa-starter-kit](https://github.com/xmlking/spa-starter-kit)
 Node: this module assumes you are using typescript with JSPM.
 
 
-
 ### Installation 
 Prerequisites: node.js 4.x, ruby, `gem install scss_lint` optionally `gem install scss`
 
@@ -51,6 +50,5 @@ we support cascaded configuration files with environment specific overwrites bas
 copy sample config files from `node_modules/gulp-ng-recipes/gulp/config` to your project `gulp/config` folder.
  
  
-###  Issues 
-* browser-sync  2.9.3 errors with iojs 3.3.0. Even with errors, it still works. expecting a fix soon. 
+###  Issues
 * if you have issues with gulp-sass (on windows!), manually install `gulp-ruby-sass` and use `sass.ruby.js` recipe provided.  
