@@ -1,0 +1,35 @@
+{
+  "version": "1.6.2",
+  "compileOnSave": false,
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "declaration": true,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "noLib": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "listFiles": true,
+    "newLine": "LF",
+    "outDir": "dist"
+  },
+  "files": [
+    "typings/tsd.d.ts",
+    "gulp/build.ts",
+    "gulp/fonts.ts",
+    "gulp/globals.ts",
+    "gulp/gpdeploy.ts",
+    "gulp/html.ts",
+    "gulp/images.ts",
+    "gulp/offline.ts",
+    "gulp/sass.ruby.ts",
+    "gulp/sass.ts",
+    "gulp/sasslint.ts",
+    "gulp/server.ts",
+    "gulp/tslint.ts",
+    "gulp/typescript.ts",
+    "gulp/typings/app.d.ts"
+  ]
+}

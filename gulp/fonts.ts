@@ -1,8 +1,8 @@
-import gulp from 'gulp';
+import  * as gulp from 'gulp';
 //import flatten from 'gulp-flatten';
-import config from 'config';
+import  * as config from 'config';
 
-let {src, options, dest} = config.get('fonts');
+let {src, dest} = config.get<{src:string, dest:string}>('fonts');
 
 /**
  * The 'fonts' task copies fonts to `/dist` directory.
@@ -17,5 +17,5 @@ let {src, options, dest} = config.get('fonts');
 
 gulp.task('fonts', () => {
   return gulp.src(src)
-    .pipe(gulp.dest(dest))
+    .pipe(gulp.dest(dest));
 });

@@ -1,8 +1,10 @@
 ### https://github.com/github/gitignore
 
+## Project
+NOTES.md
 
 ## TSD/Typings
-typings
+/typings
 
 ## Direnv
 .envrc

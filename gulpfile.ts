@@ -1,6 +1,7 @@
 import './gulp/globals';
 import './gulp/server';
-import './gulp/typescript';
+import './gulp/tslint';
+import './gulp/sasslint';
 import './gulp/sass';
 import './gulp/images';
 import './gulp/fonts';

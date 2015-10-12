@@ -1,14 +1,14 @@
 {
   "name": "gulp-ng-recipes",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "A collection of gulp recipies.",
-  "main": "gulpfile.babel.js",
+  "main": "gulpfile.ts",
   "scripts": {
     "test": "karma start",
     "build": "babel gulp --out-dir dist",
     "prepublish": "npm run build",
     "predeploy": "echo about to deploy",
-    "preinstall": "echo ignore peerDependencies warnings.., relax! this process will take some time",
+    "preinstall": "echo relax! this process will take some time",
     "postinstall": "echo If you havent done before, copy node_modules/gulp-ng-recipes/gulp/config to your projects gulp/config folder and make any necessary changes"
   },
   "repository": {
@@ -16,8 +16,10 @@
     "url": "git+https://github.com/xmlking/gulp-ng-recipes.git"
   },
   "keywords": [
-    "TypeScript",
-    "Babel"
+    "ES2016",
+    "Gulp",
+    "recipies",
+    "TypeScript"
   ],
   "author": "Sumanth Chinthagunta",
   "license": "MIT",
@@ -25,36 +27,34 @@
     "url": "https://github.com/xmlking/gulp-ng-recipes/issues"
   },
   "homepage": "https://github.com/xmlking/gulp-ng-recipes#README",
-  "peerDependencies": {
-    "babel-core": "^5.8.24",
-    "browser-sync": "^2.9.3",
+  "dependencies": {
+    "browser-sync": "^2.9.11",
     "browser-sync-spa": "^1.0.3",
     "config": "^1.16.0",
     "del": "^2.0.2",
     "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^3.0.1",
+    "gulp-autoprefixer": "^3.0.2",
     "gulp-cached": "^1.1.0",
-    "gulp-gh-pages": "^0.5.2",
-    "gulp-if": "^1.2.5",
+    "gulp-gh-pages": "^0.5.3",
+    "gulp-if": "^2.0.0",
     "gulp-imagemin": "^2.3.0",
     "gulp-replace-task": "^0.11.0",
-    "gulp-sourcemaps": "^1.5.2",
-    "gulp-scss-lint": "^0.3.0",
-    "gulp-tslint": "^3.2.0",
-    "gulp-typescript": "^2.8.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-scss-lint": "^0.3.6",
+    "gulp-tslint": "^3.3.0",
     "gulp-util": "^3.0.6",
-    "http-proxy-middleware": "^0.8.1",
-    "js-yaml": "^3.4.2",
-    "jspm": "^0.16.2",
-    "run-sequence": "^1.1.2",
-    "sw-precache": "^2.0.1",
-    "yargs": "^3.23.0"
+    "http-proxy-middleware": "^0.9.0",
+    "js-yaml": "^3.4.3",
+    "jspm": "^0.16.12",
+    "run-sequence": "^1.1.4",
+    "sw-precache": "^2.2.0",
+    "typescript-require": "^0.2.9",
+    "yargs": "^3.27.0"
   },
   "optionalDependencies": {
     "gulp-debug": "^2.0.1",
-    "babel-eslint": "^4.1.1",
-    "gulp-eslint": "^1.0.0",
     "gulp-sass": "^2.0.4",
-    "gulp-ruby-sass": "^2.0.2"
+    "gulp-ruby-sass": "^2.0.4",
+    "gulp-typescript": "^2.9.2"
   }
 }
