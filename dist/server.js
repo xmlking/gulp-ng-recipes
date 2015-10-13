@@ -1,13 +1,10 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync');
 var spa = require('browser-sync-spa');
-//import  ProxyMiddleware from 'http-proxy-middleware';
 var proxyMiddleware = require('http-proxy-middleware');
 var config = require('config');
 var bs = browserSync.create('Static Server');
-// middleware
 var _a = config.get('proxy'), context = _a.context, options = _a.options;
-// enable HTML5 mode
 bs.use(spa({
     selector: '[ng-app]'
 }));

@@ -1,6 +1,3 @@
-/**
- * Note: Make sure your site is served using HTTPS!
- */
 var gulp = require('gulp');
 var swPrecache = require('sw-precache');
 var path = require('path');

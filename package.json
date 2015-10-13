@@ -5,7 +5,7 @@
   "main": "gulpfile.ts",
   "scripts": {
     "test": "karma start",
-    "build": "babel gulp --out-dir dist",
+    "build": "tsc",
     "prepublish": "npm run build",
     "predeploy": "echo about to deploy",
     "preinstall": "echo relax! this process will take some time",
