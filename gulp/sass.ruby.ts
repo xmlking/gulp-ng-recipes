@@ -1,5 +1,5 @@
 import  * as gulp from 'gulp';
-import  sass from 'gulp-ruby-sass';
+import  * as sass from 'gulp-ruby-sass';
 import  * as sourcemaps from 'gulp-sourcemaps';
 import  * as autoprefixer from 'gulp-autoprefixer';
 import  * as iff from 'gulp-if';

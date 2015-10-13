@@ -1,7 +1,7 @@
-import * as deploy from 'gulp-gh-pages';
-import * as gulp from 'gulp';
-import * as config from 'config';
-gulp.task('deploy', () => {
+var deploy = require('gulp-gh-pages');
+var gulp = require('gulp');
+var config = require('config');
+gulp.task('deploy', function () {
     return gulp.src(config.get('deploy.src'))
         .pipe(deploy());
 });

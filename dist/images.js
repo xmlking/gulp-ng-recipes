@@ -1,14 +1,15 @@
-import * as gulp from 'gulp';
-import * as imagemin from 'gulp-imagemin';
-import * as cached from 'gulp-cached';
-import * as iff from 'gulp-if';
-import bs from './server.ts';
-import * as config from 'config';
-let { src, options, dest } = config.get('images');
-gulp.task('images', () => {
+var gulp = require('gulp');
+var imagemin = require('gulp-imagemin');
+var cached = require('gulp-cached');
+var iff = require('gulp-if');
+var server_ts_1 = require('./server.ts');
+var config = require('config');
+// let {src, options, dest} = config.get<{src:string,options:{},dest:string}>('images');
+var _a = config.get('images'), src = _a.src, options = _a.options, dest = _a.dest;
+gulp.task('images', function () {
     return gulp.src(src)
         .pipe(cached('images'))
         .pipe(imagemin(options))
         .pipe(gulp.dest(dest))
-        .pipe(iff(bs.active, bs.stream()));
+        .pipe(iff(server_ts_1.default.active, server_ts_1.default.stream()));
 });

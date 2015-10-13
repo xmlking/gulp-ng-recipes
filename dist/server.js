@@ -1,15 +1,18 @@
-import * as gulp from 'gulp';
-import * as browserSync from 'browser-sync';
-import * as spa from 'browser-sync-spa';
-import * as proxyMiddleware from 'http-proxy-middleware';
-import * as config from 'config';
-const bs = browserSync.create('Static Server');
-let { context, options } = config.get('proxy');
+var gulp = require('gulp');
+var browserSync = require('browser-sync');
+var spa = require('browser-sync-spa');
+//import  ProxyMiddleware from 'http-proxy-middleware';
+var proxyMiddleware = require('http-proxy-middleware');
+var config = require('config');
+var bs = browserSync.create('Static Server');
+// middleware
+var _a = config.get('proxy'), context = _a.context, options = _a.options;
+// enable HTML5 mode
 bs.use(spa({
     selector: '[ng-app]'
 }));
-gulp.task('serve', ['sass'], () => {
-    let ops = config.get('browserSync.options');
+gulp.task('serve', ['sass'], function () {
+    var ops = config.get('browserSync.options');
     if (context) {
         ops.middleware = [proxyMiddleware(context, options)];
     }
@@ -19,4 +22,5 @@ gulp.task('serve', ['sass'], () => {
     gulp.watch(config.get('scripts.src'), ['tslint']);
     gulp.watch(config.get('images.src'), ['images']);
 });
-export default bs;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = bs;

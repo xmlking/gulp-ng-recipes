@@ -1,13 +1,16 @@
-import * as gulp from 'gulp';
-import * as sass from 'gulp-sass';
-import * as cached from 'gulp-cached';
-import * as sourcemaps from 'gulp-sourcemaps';
-import * as autoprefixer from 'gulp-autoprefixer';
-import * as iff from 'gulp-if';
-import bs from './server.ts';
-import * as config from 'config';
-let { src, options, dest } = config.get('sass');
-gulp.task('sass', () => {
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+var cached = require('gulp-cached');
+var sourcemaps = require('gulp-sourcemaps');
+//import  autoprefixer from 'gulp-autoprefixer';
+var autoprefixer = require('gulp-autoprefixer');
+var iff = require('gulp-if');
+//import debug from 'gulp-debug';
+var server_ts_1 = require('./server.ts');
+var config = require('config');
+var _a = config.get('sass'), src = _a.src, options = _a.options, dest = _a.dest;
+//TODO minifyCss
+gulp.task('sass', function () {
     return gulp.src(src)
         .pipe(cached('sass'))
         .pipe(sourcemaps.init())
@@ -15,5 +18,5 @@ gulp.task('sass', () => {
         .pipe(autoprefixer(config.get('sass.autoprefixer')))
         .pipe(sourcemaps.write(config.get('sourcemaps.options')))
         .pipe(gulp.dest(dest))
-        .pipe(iff(bs.active, bs.stream()));
+        .pipe(iff(server_ts_1.default.active, server_ts_1.default.stream()));
 });

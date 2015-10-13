@@ -56,5 +56,13 @@ declare module 'gulp-ruby-sass' {
    * @param {string} source - Filename or directory
    * @param {Options} options - Additional processing rules/options
    */
-  export default function sass(source: string, options?: Options): NodeJS.ReadableStream;
+  //export default function sass(source: string, options?: Options): NodeJS.ReadableStream;
+
+  interface Sass {
+    (source: string, options?: Options): NodeJS.ReadWriteStream;
+    logError(error?: string): void;
+  }
+
+  var _tmp: Sass;
+  export = _tmp;
 }
