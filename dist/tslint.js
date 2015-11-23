@@ -4,8 +4,8 @@ var iff = require('gulp-if');
 var cached = require('gulp-cached');
 var server_1 = require('./server');
 var config = require('config');
-let src = config.get('scripts.src');
-gulp.task('tslint', () => {
+var src = config.get('scripts.src');
+gulp.task('tslint', function () {
     server_1.default.notify('This message will only last a second', 1000);
     return gulp.src(src)
         .pipe(cached('tslint'))

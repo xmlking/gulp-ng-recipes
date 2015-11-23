@@ -4,8 +4,8 @@ var cached = require('gulp-cached');
 var iff = require('gulp-if');
 var server_1 = require('./server');
 var config = require('config');
-let { src, options, dest } = config.get('images');
-gulp.task('images', () => {
+var _a = config.get('images'), src = _a.src, options = _a.options, dest = _a.dest;
+gulp.task('images', function () {
     return gulp.src(src)
         .pipe(cached('images'))
         .pipe(imagemin(options))

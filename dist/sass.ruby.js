@@ -5,8 +5,8 @@ var autoprefixer = require('gulp-autoprefixer');
 var iff = require('gulp-if');
 var server_1 = require('./server');
 var config = require('config');
-let { src, dest } = config.get('sass');
-gulp.task('sass', () => {
+var _a = config.get('sass'), src = _a.src, dest = _a.dest;
+gulp.task('sass', function () {
     return sass(src, {
         style: 'expanded',
         precision: 10,

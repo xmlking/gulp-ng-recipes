@@ -3,13 +3,13 @@ var browserSync = require('browser-sync');
 var spa = require('browser-sync-spa');
 var proxyMiddleware = require('http-proxy-middleware');
 var config = require('config');
-const bs = browserSync.create('Static Server');
-let { context, options } = config.get('proxy');
+var bs = browserSync.create('Static Server');
+var _a = config.get('proxy'), context = _a.context, options = _a.options;
 bs.use(spa({
     selector: '[ng-app]'
 }));
-gulp.task('serve', ['sass'], () => {
-    let ops = config.get('browserSync.options');
+gulp.task('serve', ['sass'], function () {
+    var ops = config.get('browserSync.options');
     if (context) {
         ops.middleware = [proxyMiddleware(context, options)];
     }
@@ -19,4 +19,5 @@ gulp.task('serve', ['sass'], () => {
     gulp.watch(config.get('scripts.src'), ['tslint']);
     gulp.watch(config.get('images.src'), ['images']);
 });
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = bs;

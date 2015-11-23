@@ -43,6 +43,27 @@ import 'gulp-ng-recipes/gulp/build';
 import 'gulp-ng-recipes/gulp/gpdeploy';
 ```
 
+or
+
+### gulpfile.js
+create `gulpfile.js` file in your project root. 
+Add recipes you needed as shown below: 
+
+```js
+require('gulp-ng-recipes/dist/globals');
+require('gulp-ng-recipes/dist/server');
+require('gulp-ng-recipes/dist/tslint');
+require('gulp-ng-recipes/dist/sasslint');
+// if you are using ruby sass, use: require('gulp-ng-recipes/dist/sass.ruby');
+require('gulp-ng-recipes/dist/sass');
+require('gulp-ng-recipes/dist/images');
+require('gulp-ng-recipes/dist/fonts');
+require('gulp-ng-recipes/dist/html');
+require('gulp-ng-recipes/dist/offline');
+require('gulp-ng-recipes/dist/build');
+require('gulp-ng-recipes/dist/gpdeploy');
+```
+
 ### gulp config
 we support cascaded configuration files with environment specific overwrites based on `NODE_ENV` you pass in command-line i.e., `gulp serve --env=prod`
 

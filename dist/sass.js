@@ -6,8 +6,8 @@ var autoprefixer = require('gulp-autoprefixer');
 var iff = require('gulp-if');
 var server_1 = require('./server');
 var config = require('config');
-let { src, options, dest } = config.get('sass');
-gulp.task('sass', () => {
+var _a = config.get('sass'), src = _a.src, options = _a.options, dest = _a.dest;
+gulp.task('sass', function () {
     return gulp.src(src)
         .pipe(cached('sass'))
         .pipe(sourcemaps.init())
