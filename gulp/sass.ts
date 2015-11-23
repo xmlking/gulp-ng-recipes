@@ -6,7 +6,7 @@ import  * as sourcemaps from 'gulp-sourcemaps';
 import  * as autoprefixer from 'gulp-autoprefixer';
 import  * as iff from 'gulp-if';
 //import debug from 'gulp-debug';
-import bs from './server.ts';
+import bs from './server';
 import  * as config from 'config';
 
 let {src, options, dest} = config.get<{src:string,options:{},dest:string}>('sass');

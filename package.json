@@ -1,8 +1,11 @@
 {
   "name": "gulp-ng-recipes",
-  "version": "0.2.0",
+  "version": "0.2.3",
   "description": "A collection of gulp recipies.",
   "main": "gulpfile.ts",
+  "engines": {
+    "node": ">= 5.1.0"
+  },
   "scripts": {
     "test": "karma start",
     "build": "tsc",
@@ -28,33 +31,31 @@
   },
   "homepage": "https://github.com/xmlking/gulp-ng-recipes#README",
   "dependencies": {
-    "browser-sync": "^2.9.11",
+    "browser-sync": "^2.10.0",
     "browser-sync-spa": "^1.0.3",
-    "config": "^1.16.0",
-    "del": "^2.0.2",
+    "config": "^1.17.1",
+    "del": "^2.1.0",
     "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^3.0.2",
+    "gulp-autoprefixer": "^3.1.0",
     "gulp-cached": "^1.1.0",
-    "gulp-gh-pages": "^0.5.3",
+    "gulp-gh-pages": "^0.5.4",
     "gulp-if": "^2.0.0",
-    "gulp-imagemin": "^2.3.0",
+    "gulp-imagemin": "^2.4.0",
     "gulp-replace-task": "^0.11.0",
     "gulp-sourcemaps": "^1.6.0",
-    "gulp-scss-lint": "^0.3.6",
-    "gulp-tslint": "^3.3.0",
-    "gulp-util": "^3.0.6",
+    "gulp-scss-lint": "^0.3.8",
+    "gulp-tslint": "^3.6.0",
+    "gulp-util": "^3.0.7",
     "http-proxy-middleware": "^0.9.0",
-    "js-yaml": "^3.4.3",
-    "jspm": "^0.16.12",
-    "run-sequence": "^1.1.4",
+    "js-yaml": "^3.4.4",
+    "jspm": "^0.16.15",
+    "run-sequence": "^1.1.5",
     "sw-precache": "^2.2.0",
-    "typescript-require": "^0.2.9",
-    "yargs": "^3.27.0"
+    "yargs": "^3.30.0"
   },
   "optionalDependencies": {
     "gulp-debug": "^2.0.1",
-    "gulp-sass": "^2.0.4",
-    "gulp-ruby-sass": "^2.0.4",
-    "gulp-typescript": "^2.9.2"
+    "gulp-sass": "^2.1.0",
+    "gulp-ruby-sass": "^2.0.5"
   }
 }

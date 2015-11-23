@@ -10,7 +10,7 @@ Node: this module assumes you are using typescript with JSPM.
 
 
 ### Installation 
-Prerequisites: node.js 4.x, ruby, `gem install scss_lint` optionally `gem install scss`
+Prerequisites: node.js 5.x, ruby, `gem install scss_lint` optionally `gem install scss`
 
 **SASS**: for windows, install `gulp-ruby-sass` npm module, for linux or Mac use `gulp-sass`.
 
@@ -32,7 +32,6 @@ Add recipes you needed as shown below:
 import 'gulp-ng-recipes/gulp/globals';
 import 'gulp-ng-recipes/gulp/server';
 import 'gulp-ng-recipes/gulp/tslint';
-import 'gulp-ng-recipes/gulp/typescript';
 import 'gulp-ng-recipes/gulp/sasslint';
 // if you are using ruby sass, use: import 'gulp-ng-recipes/gulp/sass.ruby';
 import 'gulp-ng-recipes/gulp/sass';

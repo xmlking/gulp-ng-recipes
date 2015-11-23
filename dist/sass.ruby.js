@@ -3,10 +3,10 @@ var sass = require('gulp-ruby-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
 var iff = require('gulp-if');
-var server_ts_1 = require('./server.ts');
+var server_1 = require('./server');
 var config = require('config');
-var _a = config.get('sass'), src = _a.src, dest = _a.dest;
-gulp.task('sass', function () {
+let { src, dest } = config.get('sass');
+gulp.task('sass', () => {
     return sass(src, {
         style: 'expanded',
         precision: 10,
@@ -19,5 +19,5 @@ gulp.task('sass', function () {
         sourceRoot: '.'
     }))
         .pipe(gulp.dest(dest))
-        .pipe(iff(server_ts_1.default.active, server_ts_1.default.stream()));
+        .pipe(iff(server_1.default.active, server_1.default.stream()));
 });

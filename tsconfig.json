@@ -1,9 +1,9 @@
 {
-  "version": "1.6.2",
   "compileOnSave": false,
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES6",
     "module": "commonjs",
+    "pretty": true,
     "declaration": false,
     "noImplicitAny": false,
     "removeComments": true,
@@ -29,7 +29,6 @@
     "gulp/sasslint.ts",
     "gulp/server.ts",
     "gulp/tslint.ts",
-    "gulp/typescript.ts",
     "gulp/typings/app.d.ts"
   ]
 }

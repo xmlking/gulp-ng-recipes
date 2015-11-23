@@ -2,7 +2,7 @@ import  * as gulp from 'gulp';
 import  * as imagemin from 'gulp-imagemin';
 import  * as cached from 'gulp-cached';
 import  * as iff from 'gulp-if';
-import bs from './server.ts';
+import bs from './server';
 import  * as config from 'config';
 
 // let {src, options, dest} = config.get<{src:string,options:{},dest:string}>('images');

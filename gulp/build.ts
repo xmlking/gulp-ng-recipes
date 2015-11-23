@@ -8,8 +8,8 @@ import  * as config from 'config';
 let {src, temp, dest, extras} = config.get<{src:string, temp:string, dest:string, extras:string[]}>('build');
 
 
-gulp.task('clean', (cb) => {
-  return del([temp, dest], {dot: true}, cb);
+gulp.task('clean', () => {
+  return del([temp, dest], {dot: true});
 });
 
 gulp.task('lint', ['tslint', 'sasslint']);

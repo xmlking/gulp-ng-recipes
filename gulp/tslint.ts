@@ -2,7 +2,7 @@ import  * as gulp from 'gulp';
 import  * as tslint from 'gulp-tslint';
 import  * as iff from 'gulp-if';
 import  * as cached from 'gulp-cached';
-import  bs from './server.ts';
+import  bs from './server';
 import  * as config from 'config';
 
 let src = config.get<string>('scripts.src');
