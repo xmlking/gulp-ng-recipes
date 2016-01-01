@@ -13,7 +13,7 @@
 
 # build
 build:
-  src: src
+  src: "src/boot.ts"
   extras:
     - "src/.htaccess"
     - "src/favicon.ico"

@@ -1,4 +1,5 @@
-# gulp-ng-recipes
+gulp-ng-recipes
+---------------
 
 A collection of gulp tasks to share with all your projects.
 
@@ -6,22 +7,27 @@ When gulp 4 is released, gulp-ng-recipes will be rewritten to support [custom re
 
 Sample Project : [spa-starter-kit](https://github.com/xmlking/spa-starter-kit)
 
-Node: this module assumes you are using typescript with JSPM.
+**Node:** this module assumes you are using `typescript` with `JSPM`.
 
 
 ### Installation 
-Prerequisites: node.js 5.x, ruby, `gem install scss_lint` optionally `gem install scss`
+Prerequisites: 
+
+* node.js 5.x
+* ruby
+* `gem install scss_lint` 
+* optionally `gem install scss`
 
 **SASS**: for windows, install `gulp-ruby-sass` npm module, for linux or Mac use `gulp-sass`.
 
-  ```bash
-  # install prerequisite globe npm modules 
-  npm install -g gulp tsd jspm
-  # install this npm modules 
-  npm install gulp-ng-recipes --save-dev --no-optional
-  # install optional sass npm module
-  npm install gulp-sass --save-dev # or npm install gulp-ruby-sass --save-dev
-  ```
+```bash
+# install prerequisite globe npm modules 
+npm install -g gulp tsd jspm
+# install this npm modules 
+npm install gulp-ng-recipes --save-dev --no-optional
+# install optional sass npm module
+npm install gulp-sass --save-dev # or npm install gulp-ruby-sass --save-dev
+```
 
 ### gulpfile.ts
 
@@ -43,26 +49,6 @@ import 'gulp-ng-recipes/gulp/build';
 import 'gulp-ng-recipes/gulp/gpdeploy';
 ```
 
-or
-
-### gulpfile.js
-create `gulpfile.js` file in your project root. 
-Add recipes you needed as shown below: 
-
-```js
-require('gulp-ng-recipes/dist/globals');
-require('gulp-ng-recipes/dist/server');
-require('gulp-ng-recipes/dist/tslint');
-require('gulp-ng-recipes/dist/sasslint');
-// if you are using ruby sass, use: require('gulp-ng-recipes/dist/sass.ruby');
-require('gulp-ng-recipes/dist/sass');
-require('gulp-ng-recipes/dist/images');
-require('gulp-ng-recipes/dist/fonts');
-require('gulp-ng-recipes/dist/html');
-require('gulp-ng-recipes/dist/offline');
-require('gulp-ng-recipes/dist/build');
-require('gulp-ng-recipes/dist/gpdeploy');
-```
 
 ### gulp config
 we support cascaded configuration files with environment specific overwrites based on `NODE_ENV` you pass in command-line i.e., `gulp serve --env=prod`
